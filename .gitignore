@@ -1,0 +1,8 @@
+memory/
+logs/
+workflows/
+
+__pycache__/
+*.pyc
+
+.env
