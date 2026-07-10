@@ -1,5 +1,6 @@
 """Simple tool registry - map tool names to functions."""
 from typing import Callable, Optional
+from tools.llm import complete as llm_complete
 from datetime import datetime
 
 class ToolRegistry:
@@ -15,6 +16,7 @@ class ToolRegistry:
         self.register("add", self._tool_add)
         self.register("get_time", self._tool_get_time)
         self.register("fail_test", self._tool_fail_test)
+        self.register("llm_complete", llm_complete)
     
     def register(self, name: str, func: Callable):
         """Register a new tool."""
