@@ -1,6 +1,8 @@
 """Simple tool registry - map tool names to functions."""
 from typing import Callable, Optional
 from tools.llm import complete as llm_complete
+from tools import filesystem
+from tools import shell
 from datetime import datetime
 
 class ToolRegistry:
@@ -17,6 +19,14 @@ class ToolRegistry:
         self.register("get_time", self._tool_get_time)
         self.register("fail_test", self._tool_fail_test)
         self.register("llm_complete", llm_complete)
+        self.register("read_file", filesystem.read_file)
+        self.register("write_file", filesystem.write_file)
+        self.register("append_file", filesystem.append_file)
+        self.register("list_dir", filesystem.list_dir)
+        self.register("delete_file", filesystem.delete_file)
+        self.register("make_dir", filesystem.make_dir)
+        self.register("file_exists", filesystem.file_exists)
+        self.register("shell_run", shell.run)
     
     def register(self, name: str, func: Callable):
         """Register a new tool."""
